@@ -6,9 +6,18 @@ app.engine('handlebars', exphds({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 
+
+// Mock array of reviews
+let reviews = [
+  { title: "Great Review"},
+  { title: "Next Review"}
+];
+
+// The root route
 app.get('/', (req, res) => {
-  res.render('home', { msg: 'Hello World!'});
+  res.render('reviews-index', { reviews: reviews});
 })
+
 app.listen(3000, () => {
   console.log('App listening on Port 3000')
 })
