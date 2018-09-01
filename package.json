@@ -1,0 +1,19 @@
+{
+  "name": "rotten-potatoes",
+  "version": "1.0.0",
+  "description": "a clone of rotten tomatoes ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MediBoss/Rotten-Potatoes.git"
+  },
+  "author": "Medi W. Assumani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MediBoss/Rotten-Potatoes/issues"
+  },
+  "homepage": "https://github.com/MediBoss/Rotten-Potatoes#readme"
+}
