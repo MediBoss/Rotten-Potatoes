@@ -1,11 +1,12 @@
     // importing necessary modules
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
 var exphds = require('express-handlebars');
 
-  // setting up the connection to the data base
-mongoose.connect('mongodb://localhost/rotten-potatoes')
+// Express App instance
+const app = express();
+// connecting to the database
+mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true})
 
   // setting up client's views
 app.engine('handlebars', exphds({defaultLayout: 'main'}));
@@ -25,8 +26,7 @@ app.set('view engine', 'handlebars');
 // ];
 
 app.get('/', (req, res) => {
-  Review.find()
-    .then(reviews => {
+  Review.find().then(reviews => {
       res.render('reviews-index', { reviews: reviews });
     })
     .catch(error => {
