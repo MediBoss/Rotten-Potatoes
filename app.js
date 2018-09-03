@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true})
 app.use(bodyParser.urlencoded({ extended: true}));
 
   // VIEWS SET UP
-var exphds = require('express-handlebars');
+let exphds = require('express-handlebars');
 app.engine('handlebars', exphds({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
@@ -40,14 +40,14 @@ app.get('/reviews/new', (req, res) => {
 app.post('/reviews', (req, res) => {
   Review.create(req.body).then((review) => {
     console.log(review);
-    res.redirect(`/revies/${review._id}`);
+    res.redirect(`/reviews/${review._id}`)
   }).catch((err) => {
     console.log(err.message);
   })
 })
 
 // ROUTE : SHOW
-app.get('/reviews/:id', (req, res) => {
+app.get('/revies/:id', (req, res) => {// fix that
   Review.findById(req.params.id).then((review) => {
     res.render('reviews-show', { review: review })
   }).catch((err) => {
