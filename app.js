@@ -1,16 +1,15 @@
-    // importing necessary modules
+    // IMPORTING MODULES AND OBJECTS
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-var exphds = require('express-handlebars');
-
-// Express App instance
 const app = express();
-// connecting to the database
+
+// MONGODB CONNECTION
 mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({ extended: true}));
 
-  // setting up client's views
+  // VIEWS SET UP
+var exphds = require('express-handlebars');
 app.engine('handlebars', exphds({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
