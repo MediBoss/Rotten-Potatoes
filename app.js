@@ -77,6 +77,17 @@ app.put('/reviews/:id', (req, res) => {
 })
 
 
+// ROUTE : DELETE
+app.delete('/reviews/:id', (req, res) => {
+  console.log('DELETE Review')
+  Review.findByIdAndRemove(req.params.id).then( review => {
+    res.redirect('/');
+  }).catch( err => {
+    console.log(err.message);
+  })
+
+})
+
 app.listen(3000, () => {
   console.log('App listening on Port 3000')
 })
