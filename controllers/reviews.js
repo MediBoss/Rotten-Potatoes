@@ -2,8 +2,8 @@ const express = require('express');
 const router =  express.Router();
 
 // PATH TO INSTANCE OF MODELS
-const Review = require('./models/review');
-const Comment = require('./models/comment');
+const Review = require('../models/review');
+const Comment = require('../models/comment');
 
       // RESOURCEFUL ROUTING
 
@@ -24,8 +24,13 @@ router.post('/reviews', (req, res) => {
 
 // ROUTE : SHOW
 router.get('/reviews/:id', (req, res) => {
+  // find review
   Review.findById(req.params.id).then( review => {
-    res.render('reviews-show', { review: review })
+    // fetch review's comments
+    Comment.find({ reviewId: req.params.id }).then(comments => {
+        // update the view with the data found
+        res.render('reviews-show', { review: review, comments: comments })
+    })
   }).catch((err) => {
     console.log(err.message);
   });

@@ -1,5 +1,4 @@
 
-
     // IMPORTING MODULES AND OBJECTS
 const express = require('express');
 const mongoose = require('mongoose');
@@ -9,7 +8,6 @@ const app = express();
 
 // DATABASE CONNECTION
 mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
-
 
   // VIEWS SET UP
 let exphds = require('express-handlebars');
