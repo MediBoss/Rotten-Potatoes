@@ -1,39 +1,10 @@
 <!--- Templete to create a new view -->
-
 <form method="POST" action="/reviews">
-  <fieldset>
-    <legend>New Review</legend>
-    <!--- Review Title -->
-    <p>
-      <label for="review-title">Title</label><br>
-      <input id="review-title" type="text" name="title" />
-    </p>
+  {{> reviews-form}}
 
-    <!--- Moview title -->
-    <p>
-      <lable for="movie-title"> Movie Title</label><br>
-      <input id="movie-title" type="text" name="movieTitle" />
-    </p>
-
-    <!-- Movie Description -->
-    <p>
-      <label for="description-text">Description</label><br>
-      <textarea id="description-text" name="description" rows="10" /></textarea>
-    </p>
-
-    <!-- Movie Rating -->
-      <label>Rating</label><br>
-      <select id="movie-rating" name="rating" />
-        <option value="0">0 stars</option>
-        <option value="1">1 star</option>
-        <option value="2">2 stars</option>
-        <option value="3">3 stars</option>
-        <option value="4">4 stars</option>
-        <option value="5">5 stars</option>
-      </select>
-
-  </fieldset>
+  <!-- BUTTON -->
   <p>
     <button type="submit">Save Review</button>
   </p>
+
 </form>
