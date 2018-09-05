@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 // PATH TO INSTANCE OF MODELS
-const Review  = require('./models/Review');
+const Review  = require('../models/review');
 
 // ROUTE : INDEX
 router.get('/', (req, res) => {

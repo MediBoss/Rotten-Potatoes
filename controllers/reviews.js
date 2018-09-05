@@ -5,17 +5,14 @@ const router =  express.Router();
 const Review = require('../models/review');
 const Comment = require('../models/comment');
 
-      // RESOURCEFUL ROUTING
-
 //ROUTE : NEW
-router.get('/reviews/new', (req, res) => {
+router.get('/new', (req, res) => {
   res.render('reviews-new', {});
 });
 
 // ROUTE : CREATE
 router.post('/reviews', (req, res) => {
   Review.create(req.body).then( review => {
-    console.log(review);
     res.redirect(`/reviews/${review._id}`)
   }).catch((err) => {
     console.log(err.message);
@@ -24,11 +21,8 @@ router.post('/reviews', (req, res) => {
 
 // ROUTE : SHOW
 router.get('/reviews/:id', (req, res) => {
-  // find review
   Review.findById(req.params.id).then( review => {
-    // fetch review's comments
     Comment.find({ reviewId: req.params.id }).then(comments => {
-        // update the view with the data found
         res.render('reviews-show', { review: review, comments: comments })
     })
   }).catch((err) => {

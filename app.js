@@ -10,7 +10,7 @@ const app = express();
 mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
 
   // VIEWS SET UP
-let exphds = require('express-handlebars');
+var exphds = require('express-handlebars');
 app.engine('handlebars', exphds({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
@@ -19,7 +19,7 @@ const home = require('./controllers/home');
 const reviews = require('./controllers/reviews');
 const comments = require('./controllers/comments');
 
-  // MIDDLEWARE SET UP
+  //ROUTES MIDDLEWARE SET UP
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use('/', home);
