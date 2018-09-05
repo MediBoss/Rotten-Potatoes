@@ -1,7 +1,7 @@
 const express = require('express');
 const router =  express.Router();
 
-// PATH TO INSTANCE OF MODELS
+// PATH TO MODELS
 const Review = require('../models/review');
 const Comment = require('../models/comment');
 
