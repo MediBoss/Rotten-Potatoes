@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-// PATH TO INSTANCE OF MODELS
+// PATH TO REVIEW MODEL
 const Review  = require('../models/review');
 
 // ROUTE : INDEX
