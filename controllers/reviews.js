@@ -11,7 +11,7 @@ router.get('/new', (req, res) => {
 });
 
 // ROUTE : CREATE
-router.post('/reviews', (req, res) => {
+router.post('/', (req, res) => {
   Review.create(req.body).then( review => {
     res.redirect(`/reviews/${review._id}`)
   }).catch((err) => {
@@ -20,15 +20,17 @@ router.post('/reviews', (req, res) => {
 });
 
 // ROUTE : SHOW
-router.get('/reviews/:id', (req, res) => {
-  Review.findById(req.params.id).then( review => {
-    Comment.find({ reviewId: req.params.id }).then(comments => {
-        res.render('reviews-show', { review: review, comments: comments })
-    })
-  }).catch((err) => {
-    console.log(err.message);
-  });
-});
+router.get('/:id', (req, res) => {
+  Review.findById(req.params.id)
+    .then( review => {
+      Comment.find({ reviewId: review._id })
+        .then(comments => {
+            res.render('reviews-show', { review: review, comments: comments });
+          });
+        }).catch((err) => {
+          console.log(err.message);
+        });
+      });
 
 
 // ROUTE : UPDATE

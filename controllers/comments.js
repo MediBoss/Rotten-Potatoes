@@ -5,7 +5,7 @@ const router = express.Router();
 const Comment = require('../models/comment');
 
 // ROUTE : CREATE
-router.post('/reviews/comments', (req, res) => {
+router.post('/', (req, res) => {
   Comment.create(req.body).then(comment => {
     res.redirect(`/reviews/${comment.reviewId}`);
   }).catch(err => {
@@ -15,14 +15,13 @@ router.post('/reviews/comments', (req, res) => {
 
 
 // ROUTE: DELETE
-router.delete('/reviews/comments/:id', (req, res) => {
-   console.log("DELETE comment");
-   Comment.findByIdAndRemove(req.params.id).then(comment => {
-     res.redirect(`/reviews/${comment.reviewId}`);
-   }).catch(err => {
-     console.log(err.message);
-   });
+router.delete('/:id', (req, res) => {
+   Comment.findByIdAndRemove(req.params.id)
+    .then(comment => {
+      res.redirect(`/reviews/${comment.reviewId}`);
+    }).catch(err => {
+      console.log(err.message);
+    });
 });
-
 
 module.exports = router;
