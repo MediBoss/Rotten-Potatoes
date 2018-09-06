@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
 
 // ROUTE : UPDATE
 router.put('/reviews/:id', (req, res) => {
-  Review.findByIdAndUpdate(req.params.id, req.body)
+  Review.findByIdAndUpdat(req.params.id, req.body)
     .then(review => {
       res.redirect(`/reviews/${review._id}`)
     }).catch(err => {
@@ -44,7 +44,7 @@ router.put('/reviews/:id', (req, res) => {
 });
 
 // ROUTE : DELETE
-router.delete('/reviews/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   console.log('DELETE Review')
   Review.findByIdAndRemove(req.params.id)
     .then(review => {
