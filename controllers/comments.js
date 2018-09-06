@@ -6,11 +6,12 @@ const Comment = require('../models/comment');
 
 // ROUTE : CREATE
 router.post('/', (req, res) => {
-  Comment.create(req.body).then(comment => {
-    res.redirect(`/reviews/${comment.reviewId}`);
-  }).catch(err => {
-    console.log(err.message);
-  })
+  Comment.create(req.body)
+    .then(comment => {
+      res.redirect(`/reviews/${ comment.reviewId }`);
+    }).catch(err => {
+      console.log(err.message);
+    });
 });
 
 
