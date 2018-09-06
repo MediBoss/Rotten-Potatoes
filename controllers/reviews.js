@@ -33,6 +33,13 @@ router.get('/:id', (req, res) => {
       });
 
 
+// ROUTE : EDIT
+router.get('/:id/edit', (req, res) => {
+  Review.findById(req.params.id, (err, review) => {
+    res.render('reviews-edit', {review: review });
+  });
+});
+
 // ROUTE : UPDATE
 router.put('/reviews/:id', (req, res) => {
   Review.findByIdAndUpdat(req.params.id, req.body)
