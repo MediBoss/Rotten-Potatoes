@@ -10,7 +10,7 @@
 
 - [x] Set up views using Handlebars
 - [x] Create and configure all resoursceful routes
-- [x] Connect to local NoSQL dataabse MongoDB
+- [x] Connect to local NoSQL database MongoDB
 - [x] CRUD
 
 ## Technology and Resources  
