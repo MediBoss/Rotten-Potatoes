@@ -12,6 +12,7 @@
 - [x] Create and configure all resoursceful routes
 - [x] Connect to local NoSQL database MongoDB
 - [x] CRUD
+- [ ] Add Test 
 
 ## Technology and Resources  
 
