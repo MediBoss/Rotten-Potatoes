@@ -12,10 +12,11 @@
 - [x] Create and configure all resoursceful routes
 - [x] Connect to local NoSQL database MongoDB
 - [x] CRUD
-- [ ] Add Test 
+- [x] Add Test 
 
-## Technology and Resources  
+## Technology
 
 * Frontend : HTML, Boostrap
-* Backend : Node.js and Express.js
+* Backend : Node.js & Express.js
+* Testing : Mocha.js & Chai.js
 * Database : MongoDB
