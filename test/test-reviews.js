@@ -4,16 +4,24 @@ const server = require('../app');
 const should = chai.should();
 const Review = require('../models/review');
 
-// SAMPLE data to test EDIT, UPDATE, DELETE ROUTES
-const sampleReview = {
-  "title": "The most amazing Marvel movie",
-   "movie-title": "Thor Ragnarock",
-   "description": "Thor and loki was well displayed in the moview"
-}
 
 chai.use(chaiHttp);
 
+// SAMPLE data to test EDIT, UPDATE, DELETE ROUTES
+let sampleReview = {
+  "title": "The most amazing Marvel movie",
+   "movie-title": "Thor Ragnarock",
+   "description": "Thor and loki was well displayed in the moview"
+};
+
 describe('Reviews', () => {
+
+    // MAKING SURE THE SAMPLE REVIEW OBJECT CREATED IS DELETED FROM THE DATABASE
+  after(() => {
+    Review.deleteMany({title: 'The most amazing Marvel movie'}).exec( (err, reviews) => {
+      reviews.remove();
+    })
+  });
 
   // TEST ROUTE : INDEX
   it('should index ALL reviews on / GET', (done) => {
