@@ -87,10 +87,21 @@ describe('Reviews', () => {
             res.should.have.status(200);
             res.should.be.html;
             done();
-          })
-
-      })
-    })
+          });
+      });
+    });
 
     // TEST ROUTE : DELETE
+    it('should delete the selected review /reviews/:id DELETE', (done) => {
+      let review = new Review(sampleReview);
+      review.save( (err, data) => {
+        chai.request(server)
+          .delete(`/reviews/${data._id}?_method=DELETE`)
+          .end( (err, res) => {
+            res.should.have.status(200);
+            res.should.be.html;
+            done();
+          });
+      });
+    });
 });
