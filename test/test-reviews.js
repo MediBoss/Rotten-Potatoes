@@ -49,10 +49,48 @@ describe('Reviews', () => {
     });
 
     // TEST ROUTE : SHOW
-    it('should display all the reviews created /reviews/:id GET', (done) => {
-      chai.re
-    })
+    it('should display  created /reviews/:id GET', (done) => {
+      let review = new Review(sampleReview);
+      review.save( (err, data) => {
+        chai.request(server)
+          .get(`/reviews/${data._id}`)
+          .end( (err, res) => {
+            res.should.have.status(200);
+            res.should.be.html;
+            done();
+          });
+      });
+    });
+
     // TEST ROUTE : EDIT
+    it('should give the user the ability to edit a review /reviews/:id GET', (done) => {
+      let review = new Review(sampleReview);
+      review.save( (err, data) => {
+        chai.request(server)
+          .get(`/reviews/${data._id}/edit`)
+          .end( (err, res) => {
+            res.should.have.status(200);
+            res.should.be.html;
+            done();
+          })
+      })
+    })
+
     // TEST ROUTE : UPDATE
+    it('should update the edited review /reviews/:id PUT', (done) => {
+      let review = new Review(sampleReview);
+      review.save( (err, data) => {
+        chai.request(server)
+          .put(`/reviews/${data._id}?_method=PUT`)
+          .send({'title': 'updating title'})
+          .end( (err, res) => {
+            res.should.have.status(200);
+            res.should.be.html;
+            done();
+          })
+
+      })
+    })
+
     // TEST ROUTE : DELETE
 });
