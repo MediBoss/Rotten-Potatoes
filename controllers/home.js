@@ -1,9 +1,8 @@
-// Route to the home page
 
 const express = require('express');
 const router = express.Router();
 
-// PATH TO REVIEW MODEL
+
 const Review  = require('../models/review');
 
 // ROUTE : INDEX
