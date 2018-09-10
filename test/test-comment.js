@@ -1,5 +1,6 @@
+/*
 const chai = require('chai'); // asertion library
-const chaiHttp = require('chaiHttp'); // helper test library that gives us http methods to make test resquest
+const chaiHttp = require('chai-http'); // helper test library that gives us http methods to make test resquest
 const should = chai.should(); // using the should test style
 const Comment = require('../models/comment');
 const server = require('../app');
@@ -14,13 +15,35 @@ describe('Comments', () => {
 
   // MAKING SURE THE SAMPLE COMMENT OBJECT CREATED IS DELETED FROM THE DATABASE
 after(() => {
-  Review.deleteMany({title: 'The most amazing Marvel movie'}).exec( (err, reviews) => {
-    reviews.remove();
+  Comment.deleteMany({content: 'The movie was actually pretty good'}).exec( (err, comments) => {
+    comments.remove();
   })
 });
 
 // TEST ROUTE : CREATE
+it('should create a new comment /comments POST', (done) => {
+  chai.request(server)
+    .post(`/comments`)
+    .end( (err, res) => {
+      res.should.have.status(200);
+      res.should.be.html;
+      done();
+    });
+});
 
 // TEST ROUTE : DELETE
+it('should destroy a comment object /comments/:id', (done) => {
+  let comment = new Comment(sampleComment);
+  comment.save( (err, data) => {
+    chai.request(server)
+      .delete(`/comments/${data._id}?_method=DELETE`)
+      .end( (err, res) => {
+        res.should.have.status(200);
+        res.should.be.html;
+        done();
+      });
+    });
+  });
 
-})
+});
+*/
