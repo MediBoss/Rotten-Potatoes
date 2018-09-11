@@ -10,12 +10,15 @@ router.get('/', (req, res) => {
     .then(response => {
       res.render('movies-index', { movies: response.results })
     }).catch(console.error)
-});
+})
 
 // ROUTE : SHOW
 router.get('/movies/:id', (req, res) => {
-  moviedb.getInfo({
-    movieId: req.params.id
+  moviedb.movieInfo({
+    id: req.params.id
+  }).then(movie => {
+    res.render('movies-show', { movie: movie});
+  }).catch(console.error)
 })
 
 module.exports = router;
