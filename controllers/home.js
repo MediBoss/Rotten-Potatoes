@@ -6,6 +6,7 @@ const router = express.Router();
 const Review  = require('../models/review');
 
 // ROUTE : INDEX
+/*
 router.get('/', (req, res) => {
   Review.find()
     .then(reviews => {
@@ -14,5 +15,5 @@ router.get('/', (req, res) => {
       console.log(error);
     });
 });
-
+*/
 module.exports = router;
