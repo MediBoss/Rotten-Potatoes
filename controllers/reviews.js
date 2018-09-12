@@ -5,13 +5,13 @@ const router =  express.Router();
 const Review = require('../models/review');
 const Comment = require('../models/comment');
 
-//ROUTE : NEW
-router.get('/movies/:id/reviews/new', (req, res) => {
+// ROUTE : NEW
+router.get('/movies/:movieId/reviews/new', (req, res) => {
   res.render('reviews-new', { movieId: req.params.movieId });
 });
 
 // ROUTE : CREATE
-router.post('/movies/:id/reviews', (req, res) => {
+router.post('/movies/:movideId/reviews', (req, res) => {
   Review.create(req.body).then( review => {
     res.redirect(`/movies/${req.params.movieId}`)
   }).catch((err) => {

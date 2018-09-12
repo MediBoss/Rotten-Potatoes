@@ -15,9 +15,7 @@ router.get('/', (req, res) => {
 
 // ROUTE : SHOW
 router.get('/movies/:id', (req, res) => {
-  moviedb.movieInfo({
-    id: req.params.id
-  }).then(movie => {
+  moviedb.movieInfo({id: req.params.id}).then(movie => {
     Review.find({
       movieId: req.params.id
     }).then(reviews => {
