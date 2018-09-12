@@ -53,9 +53,9 @@ router.put('/:id', (req, res) => {
 // ROUTE : DELETE
 router.delete('/:id', (req, res) => {
   Review.findByIdAndRemove(req.params.id)
-    .then(review => {
+    .then(function (review) {
       res.redirect('/');
-    }).catch(err => {
+    }).catch(function(err){
       console.log(err.message);
   });
 });
