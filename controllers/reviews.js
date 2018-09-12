@@ -6,12 +6,12 @@ const Review = require('../models/review');
 const Comment = require('../models/comment');
 
 //ROUTE : NEW
-router.get('/movies/:movieId/reviews/new', (req, res) => {
+router.get('/movies/:id/reviews/new', (req, res) => {
   res.render('reviews-new', { movieId: req.params.movieId });
 });
 
 // ROUTE : CREATE
-router.post('/movies/:movieId/reviews', (req, res) => {
+router.post('/movies/:id/reviews', (req, res) => {
   Review.create(req.body).then( review => {
     res.redirect(`/movies/${req.params.movieId}`)
   }).catch((err) => {
@@ -20,7 +20,7 @@ router.post('/movies/:movieId/reviews', (req, res) => {
 });
 
 // ROUTE : SHOW
-router.get('/:id', (req, res) => {
+router.get('/movies/:id/reviews/:id', (req, res) => {
   Review.findById(req.params.id)
     .then( review => {
       Comment.find({ reviewId: review._id })
@@ -34,14 +34,14 @@ router.get('/:id', (req, res) => {
 
 
 // ROUTE : EDIT
-router.get('/:id/edit', (req, res) => {
+router.get('/movies/id/reviews/:id/edit', (req, res) => {
   Review.findById(req.params.id, (err, review) => {
     res.render('reviews-edit', {review: review });
   });
 });
 
 // ROUTE : UPDATE
-router.put('/:id', (req, res) => {
+router.put('/movies/:id/reviews/:id', (req, res) => {
   Review.findByIdAndUpdate(req.params.id, req.body)
     .then(review => {
       res.redirect(`/reviews/${review._id}`)
@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
 });
 
 // ROUTE : DELETE
-router.delete('/:id', (req, res) => {
+router.delete('/movies/:id/reviews/:id	', (req, res) => {
   Review.findByIdAndRemove(req.params.id)
     .then(function (review) {
       res.redirect('/');
