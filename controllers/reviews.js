@@ -6,14 +6,14 @@ const Review = require('../models/review');
 const Comment = require('../models/comment');
 
 //ROUTE : NEW
-router.get('/new', (req, res) => {
-  res.render('reviews-new', {});
+router.get('/movies/:movieId/reviews/new', (req, res) => {
+  res.render('reviews-new', { movieId: req.params.movieId });
 });
 
 // ROUTE : CREATE
-router.post('/', (req, res) => {
+router.post('/movies/:movieId/reviews', (req, res) => {
   Review.create(req.body).then( review => {
-    res.redirect(`/reviews/${review._id}`)
+    res.redirect(`/movies/${req.params.movieId}`)
   }).catch((err) => {
     console.log(err.message);
   });
