@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     .then(response => {
       res.render('movies-index', { movies: response.results });
     }).catch(console.error)
-})
+});
 
 // ROUTE : SHOW
 router.get('/movies/:id', (req, res) => {

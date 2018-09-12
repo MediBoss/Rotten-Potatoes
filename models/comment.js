@@ -1,4 +1,5 @@
 
+// The Comment Model
 const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 

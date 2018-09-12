@@ -11,7 +11,7 @@ router.get('/movies/:movieId/reviews/new', (req, res) => {
 });
 
 // ROUTE : CREATE
-router.post('/movies/:movideId/reviews', (req, res) => {
+router.post('/movies/:movieId/reviews', (req, res) => {
   Review.create(req.body).then( review => {
     res.redirect(`/movies/${req.params.movieId}`)
   }).catch((err) => {
@@ -20,7 +20,7 @@ router.post('/movies/:movideId/reviews', (req, res) => {
 });
 
 // ROUTE : SHOW
-router.get('/movies/:id/reviews/:id', (req, res) => {
+router.get('/movies/:movieId/reviews/:id', (req, res) => {
   Review.findById(req.params.id)
     .then( review => {
       Comment.find({ reviewId: review._id })

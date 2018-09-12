@@ -24,7 +24,7 @@ const movies = require('./controllers/movies');
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use('/', movies);
-app.use('/reviews', reviews);
+app.use('/', reviews);
 app.use('/reviews/comments', comments);
 
 
