@@ -12,16 +12,12 @@ router.get('/movies/:movieId/reviews/new', (req, res) => {
 
 // ROUTE : CREATE
 router.post('/movies/:movieId/reviews', (req, res) => {
-  Review.create(req.body).then( review => {
-    res.redirect(`/movies/${req.params.movieId}`)
-  }).catch((err) => {
-    console.log(err.message);
-  });
+  console.log(req.body);
 });
 
 // ROUTE : SHOW
 router.get('/movies/:movieId/reviews/:id', (req, res) => {
-  Review.findById(req.params.id)
+  Review.findById(req.params.movieId)
     .then( review => {
       Comment.find({ reviewId: review._id })
         .then(comments => {

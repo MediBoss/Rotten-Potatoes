@@ -20,7 +20,7 @@ router.get('/movies/:id', (req, res) => {
       movieId: req.params.id
     }).then(reviews => {
       res.render('movies-show', { movie: movie, reviews: reviews});
-    })
+    }).catch(console.error)
   }).catch(console.error)
 });
 
