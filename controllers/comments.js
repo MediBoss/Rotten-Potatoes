@@ -5,7 +5,7 @@ const router = express.Router();
 const Comment = require('../models/comment');
 
 // ROUTE : CREATE
-router.post('/', (req, res) => {
+router.post('/movies/:movieId/reviews/comments', (req, res) => {
   Comment.create(req.body)
     .then(comment => {
       res.redirect(`/reviews/${ comment.reviewId }`);
@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
 
 
 // ROUTE: DELETE
-router.delete('/:id', (req, res) => {
+router.delete('/movies/:movieId/reviews/comments/:id', (req, res) => {
    Comment.findByIdAndRemove(req.params.id)
     .then(comment => {
       res.redirect(`/reviews/${comment.reviewId}`);

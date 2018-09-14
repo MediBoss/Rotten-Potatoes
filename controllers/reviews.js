@@ -12,8 +12,12 @@ router.get('/movies/:movieId/reviews/new', (req, res) => {
 
 // ROUTE : CREATE
 router.post('/movies/:movieId/reviews', (req, res) => {
-  console.log(req.body);
-});
+  Review.create(req.body).then((review) => {
+    res.redirect(`/movies/${review.movieId}`);
+  }).catch((err) => {
+    console.log(err.message);
+  })
+})
 
 // ROUTE : SHOW
 router.get('/movies/:movieId/reviews/:id', (req, res) => {

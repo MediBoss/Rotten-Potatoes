@@ -1,9 +1,10 @@
 <!--- Templete to create a new view -->
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <form method="POST" action="/reviews">
+    <form method="POST" action="/movies/{{movieId}}/reviews">
       {{> reviews-form }}
       <!-- BUTTON -->
+      <input type="hidden" name="movieId" value="{{movieId}}">
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Save Review</button>
       </div>

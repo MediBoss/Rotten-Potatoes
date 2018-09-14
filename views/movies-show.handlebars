@@ -15,7 +15,20 @@
 </div>
 
 
-<h3>Reviews For {{movie.title}}</h3>
+{{#if reviews}}<h3>Reviews</h3>
+    </hr>{{/if}}
 {{#each reviews}}
-  {{> review}}
+<div>
+  <div class="panel panel-default">
+      <div class="panel padding">
+        <div class="pull right trashit">
+          <form method="POST" action="/movies/{{this.movieId}}/reviews/{{this._id}}?_method=DELETE">
+            <button type="submit"></button>>
+          </form>>
+        </div>>
+         <h3 class="panel-title"><a href="/movies/{{this.movieId}}/reviews/{{this._id}}">{{this.title}}</a>>{{this.rating}}</h3>>
+      </div>>
+      <div class="panel-body">
+        <p>{{this.description}}</p>
+  </div>
 {{/each}}
