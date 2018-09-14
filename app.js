@@ -22,8 +22,8 @@ const movies = require('./controllers/movies');
   //ROUTES MIDDLEWARE SET UP
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true}));
-app.use('/', movies);
-app.use('/', reviews);
+app.use(movies);
+app.use(reviews);
 //app.use('/reviews/comments', comments);
 
 
