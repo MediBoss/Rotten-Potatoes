@@ -30,5 +30,5 @@ app.use('/', reviews);
 // SERVER LISTENING
 
 module.exports = app.listen(3000, () => {
-  console.log('App listening on Port 3000')
+  console.log('Server listening on Port 3000')
 });

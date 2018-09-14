@@ -51,10 +51,10 @@ router.put('/movies/:id/reviews/:id', (req, res) => {
 });
 
 // ROUTE : DELETE
-router.delete('/movies/:id/reviews/:id	', (req, res) => {
+router.delete('/movies/:movieId/reviews/:id	', (req, res) => {
   Review.findByIdAndRemove(req.params.id)
     .then(function (review) {
-      res.redirect('/');
+      res.redirect(`/movies/${req.params.movieId}`);
     }).catch(function(err){
       console.log(err.message);
   });
