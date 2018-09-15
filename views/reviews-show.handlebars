@@ -10,17 +10,18 @@
     <p><a href="/movies/{{review.movieId}}/reviews/{{review._id}}/edit">Edit</a></p>
     <p><form method="POST" action="/movies/{{review.movieId}}/reviews/{{review._id}}?_method=DELETE">
         <button class="btn btn-primary" type="submit">Delete</button>
-    </form></p>
+    </form>
+    </p>
+    
+    <hr>
+
 
     <!-- Comment form -->
     {{> comment-form}}
-
-    <hr>
-
-    <!-- Show comments-->
-    {{#each comments}}
-      {{> comment }}
-    {{/each}}
-
+    <div id="comments">
+       {{#each comments}}
+        {{> comment}}
+      {{/each}}
+    </div>
   </div>
 </div>
