@@ -14,17 +14,19 @@ var exphds = require('express-handlebars');
 app.engine('handlebars', exphds({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-// ROUTERS
+// IMPORT ROUTERS
 const reviews = require('./controllers/reviews');
-//const comments = require('./controllers/comments');
+const comments = require('./controllers/comments');
 const movies = require('./controllers/movies');
+const admin = require('./controllers/admin');
 
-  //ROUTES MIDDLEWARE SET UP
+  //MIDDLEWARE SET UP
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(movies);
 app.use(reviews);
-//app.use('/reviews/comments', comments);
+app.use(comments);
+app.use(admin)
 
 
 // SERVER LISTENING
