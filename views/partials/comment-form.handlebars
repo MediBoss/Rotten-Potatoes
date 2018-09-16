@@ -1,12 +1,11 @@
 <!-- views/partials/comment-form.handlebars -->
 <form action="#" id="newComment">
-  <input type="hidden" value="{{review._id}}" name="reviewId">
+  <input type="hidden" value="{{this._id}}" name="reviewId">
   <fiedlset>
     <!-- Comment description-->
     <div class="form-group">
       <label for="comment-content">Description</label></br>
-      <textarea class="form-control"
-      id="comment-content" name="content" rows="10" placeholder="Your comment..."/></textarea>
+      <textarea class="form-control" id="comment-content" name="content" rows="10" placeholder="Your comment..."/></textarea>
     </div>
 
   </fiedlset>

@@ -1,12 +1,12 @@
 
-    // IMPORTING MODULES AND OBJECTS
+    // IMPORTING MODULES NEEDED
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const app = express();
 
-// DATABASE CONNECTION
+// DATABASE CONNECTION TO MONGODB THROUGH ODM MONGOOSE
 mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
 
   // VIEWS SET UP
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(movies);
 app.use(reviews);
 app.use(comments);
-app.use(admin)
+app.use(admin);
 
 
 // SERVER LISTENING
