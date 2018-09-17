@@ -16,13 +16,12 @@ router.post('/movies/:movieId/reviews/comments', (req, res) => {
 
 
 // ROUTE: DELETE COMMENT
-router.delete('/movies/:movieId/reviews/:reviewId/comments/:id', (req, res) => {
+router.delete('/movies/:movieId/reviews/comments/:id', (req, res) => {
    Comment.findByIdAndRemove(req.params.id)
     .then(comment => {
-      res.status(200).send(comment);
+      res.redirect(`/movies/:movieId/reviews/${comment.movieId}`);
     }).catch(err => {
       console.log(err.message);
-      res.status(400).send(err)
     });
 });
 
