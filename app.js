@@ -14,7 +14,7 @@ var exphds = require('express-handlebars');
 app.engine('handlebars', exphds({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-// IMPORT ROUTERS
+// IMPORT ROUTERS/CONTROLLERS
 const reviews = require('./controllers/reviews');
 const comments = require('./controllers/comments');
 const movies = require('./controllers/movies');

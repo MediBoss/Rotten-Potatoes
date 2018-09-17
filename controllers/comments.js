@@ -5,13 +5,12 @@ const router = express.Router();
 const Comment = require('../models/comment');
 
 // ROUTE : CREATE COMMENT
-router.post('/movies/:movieId/reviews/:id/comments', (req, res) => {
+router.post('/movies/:movieId/reviews/comments', (req, res) => {
   Comment.create(req.body)
     .then(comment => {
-      console.log(req.body)
-      res.status(200).send( {comment: comment});
+      res.redirect(`/movies/:movieId/reviews/${comment.reviewId}`);
     }).catch(err => {
-      res.status(400).send( {error: error} )
+      console.log(err.message);
     });
 });
 
