@@ -1,5 +1,7 @@
 <!-- views/partials/comment-form.handlebars -->
-<form action="#" id="newComment">
+<form action="" id="newComment" method="put">
+{{!-- <form action="#" id="newComment" method="post" onsubmit="event.preventDefault(); return false;"> --}}
+  <input type="hidden" value="{{review.movieId}}">
   <input type="hidden" value="{{review._id}}" name="reviewId">
   <fieldset>
     <legend>Add a Comment</legend>
@@ -16,9 +18,9 @@
 
   <!-- BUTTON -->
   <div class="form-group">
+    {{!-- <button class="btn btn-primary" type="button" onclick="addComment();">Save Comment</button> --}}
     <button class="btn btn-primary" type="submit">Save Comment</button>
   </div>
 </form>
-</br>
-</br>
-<h1>All Comments</h1>
+
+<script type="text/javascript" src="/javascript/scripts.js"></script>

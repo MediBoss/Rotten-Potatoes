@@ -13,37 +13,57 @@
 let currentUrl = new URL(window.location);
 let currentPath = currentUrl.pathname.split('/');
 
+document.getElementById("newComment").addEventListener("submit", (e) => {
+    // prevent the default form behavior
+    // e.preventDefault();
+    // // serialize the form data into an object
+    // let comment = this.serializeArray()
+    // // use axios to initialize a post request and send in the form data
 
-//This code waits for a submition of a new comment
-document.getElementById('newComment').addEventListener('submit', e => {
+    console.log('poop');
 
-    e.preventDefault();
-    let comment = $(document.getElementById('newComment')).serializeArray()
-    console.log(comment);
 
-    axios.post(`/movies/${currentPath[2]}/reviews/${currentPath[4]}/comments`, comment).then(function(response) {
-        console.log(response);
-        document.getElementById('newComment').reset(); 
-        $(document.getElementById('comments')).prepend(
-        `
-                <div class="card">
-                <div class="card-block">
-                  <p class="card-text">${response.data.comment.content}</p>
-                    <p>
-                        <form method="POST" action="/reviews/comments/${response.data.comment._id}?_method=DELETE">
-                        <button class="btn btn-link" type="submit">Delete</button>
-                        </form>
-                    </p>
-                </div>
-                </div>
-        `
-                    );
-    }).catch(function (error) {
-        console.log(error);
-        alert('ERROR FOUND : UNABLE TO SAVE YOUR COMMENT');
-    });
+    // axios.post('/user', comment)
+    //   .then(function (response) {
+    //     // wait for the success response from the server
+    //     console.log(response);
+    //     // remove the information from the form
+    //     // display the data as a new comment on the page
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //     // handle any errors
+    //     alert('There was a problem saving your comment. Please try again.')
+    //   });
 });
 
+// function addComment() {
+//     let formElements = document.getElementById("newComment").elements;
+//     let comment = {};
+
+//     for (var i = 0; i < formElements.length; i++) {
+//         if (formElements[i].type != "submit") //we dont want to include the submit-buttom
+//             comment[formElements[i].name] = formElements[i].value;
+        
+//     }
+
+//     if (comment["content"] == ""){
+//         alert("ERROR FOUND : EMPTY COMMENT CONTENT");
+//         return;
+//     }
+//     console.log(comment['movieId']);
+//     axios.post(`/movies/${comment['movieId']}/reviews/comments'`, comment).then(function(response) {
+//         let id = String(response.data.comment._id).slice(-8);
+//         document.getElementById("newComment").reset();
+//         document.getElementById("comments").innerHTML = `<div class="panel panel-default" id= "${response.data.comment._id}">
+//             <div class="panel-body">
+//                 <p>${response.data.comment.content}</p>
+//             </div>
+//     </div>
+//     ` + document.getElementById("comments").innerHTML;
+//     });
+
+// }
 
 //Dectecting the click event on commentId button
 // document.querySelector('.delete-comment').addEventListener('click', (e => {

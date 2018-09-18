@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const app = express();
 
-app.use(express.static('public'));
 
 // DATABASE CONNECTION TO MONGODB THROUGH ODM MONGOOSE
 mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
@@ -29,6 +28,7 @@ app.use(movies);
 app.use(reviews);
 app.use(comments);
 app.use(admin);
+app.use(express.static('public'));
 
 
 // SERVER LISTENING
