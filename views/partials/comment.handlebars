@@ -1,14 +1,13 @@
 <!-- views/partials/comment.handlebars -->
 
-
-<div class="panel panel-default" id="{{this._id}}">
-  <div class="panel-heading">
-    <div class="pull-right trashit-comment">
-            <button class="fa fa-trash-o" type="button" id="deleteComment-{{slice8 this._id}}" onclick="commentDelete('{{slice8 this._id}}');" comment-id={{this._id}} movie-id={{this.movieId}}></button>
-      </div>  
-
-      <div class="panel-body">
-        <p>{{this.content}}</p>
-      </div>
+<div class="card">
+  <div class="card-block">
+  <p class="card-text">{{this.content}}</p>
+  <p>
+      <form method="POST" action="/reviews/comments/${{this._id}}?_method=DELETE">
+          <button class="btn btn-link" type="submit">Delete</button>
+      </form>
+  </p>
   </div>
+</div>
 
