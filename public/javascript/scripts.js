@@ -1,18 +1,24 @@
-//listen for a form submit event
+
 window.onload = function() {
 
-    let newCommentForm = document.getElementById("newComment");
+    // we get the form from the handlebard/html form
+    let newCommentForm = document.getElementById("newComment"); 
     document.getElementById("newComment").addEventListener("submit", e => {
-        // prevent the default form behavior
+
         e.preventDefault();
-        // serialize the form data into an object
+
+        // DONT USE serializeArray(), it returns an arrya but we want JSON
         let comment = $(newCommentForm).serialize();
+
         // use axios to initialize a post request and send in the form data
         axios.post(`/movies/${comment.movieId}/reviews/comments`, comment)
         .then(function (response) {
+
+            // we get the comment on a JSON format from the response
             let newComment = response.data.comment;
             newCommentForm.reset();
-            // display the data as a new comment on the page
+
+            
             $('#comments').prepend(
             `
             <div class="card">
@@ -30,7 +36,6 @@ window.onload = function() {
         })
         .catch(function (error) {
             console.log(error);
-            // handle any errors
             alert('There was a problem saving your comment. Please try again.')
         });
     });
