@@ -51,11 +51,11 @@ window.onload = function() {
         axios.delete(`/movies/${movieId}/reviews/comments/${commentId}`)
         .then( response => {
             console.log(response);
-            // objectToDelete = e.target.parentNode.parentNode;
             // comment.parentNode.removeChild(objectToDelete);
             // document.getElementById(commentId).remove();
-            comment = document.getElementById(commentId).remove();
-            comment.parentNode.removeChild(comment);
+            //comment = document.getElementById(commentId).remove();
+            objectToDelete = e.target.parentNode.parentNode;
+            comment.parentNode.removeChild(objectToDelete);
         })
         .catch(error => {
             console.log(error)
