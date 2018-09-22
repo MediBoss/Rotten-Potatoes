@@ -20,3 +20,5 @@
 * Backend : Node.js & Express.js
 * Testing : Mocha.js & Chai.js
 * Database : MongoDB
+
+App is live <a href = "https://rotten-potatoes-m-a.herokuapp.com/">here</a>
