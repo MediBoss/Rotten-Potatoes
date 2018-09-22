@@ -13,10 +13,11 @@
 - [x] Connect to local NoSQL database MongoDB
 - [x] CRUD
 - [x] Add Test 
+- [x] Push live on Heroku
 
 ## Technology
 
-* Frontend : HTML, Boostrap
+* Frontend : Handlebars, Boostrap
 * Backend : Node.js & Express.js
 * Testing : Mocha.js & Chai.js
 * Database : MongoDB
