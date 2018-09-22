@@ -26,7 +26,7 @@ router.delete('/admin/delete/:id', (req, res) => {
         res.status(200).send(review)
         res.redirect('/admin')
     })
-    .catch(error => {;
+    .catch(error => {
         console.log(error.message)
         res.status(400).send(error);
     });

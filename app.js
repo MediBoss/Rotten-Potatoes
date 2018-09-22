@@ -13,8 +13,8 @@ const movies = require('./controllers/movies');
 const admin = require('./controllers/admin');
 
 
-// DATABASE CONNECTION TO MONGODB THROUGH ODM MONGOOSE
-mongoose.connect('mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
+// DATABASE CONNECTION TO HEROKU CLOUD DATABASE THROUGH MONGOOSE
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rotten-potatoes", {useNewUrlParser: true});
 
 // VIEWS SET UP
 var exphds = require('express-handlebars');
