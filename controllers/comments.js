@@ -13,15 +13,18 @@ router.post('/movies/:movieId/reviews/comments', (req, res) => {
     });
 });
 
-/*
+
 // ROUTE: DELETE COMMENT
 router.delete('/movies/:movieId/reviews/comments/:id', (req, res) => {
    Comment.findByIdAndRemove(req.params.id)
     .then(comment => {
-      res.redirect(`/movies/:movieId/reviews/${comment.movieId}`);
-    }).catch(err => {
-      console.log(err.message);
+      res.status(200).send({
+        comment: comment
+      });
+    }).catch(error => {
+      res.status(400).send({
+        error: error
+      })
     });
 });
-*/
 module.exports = router;

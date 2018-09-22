@@ -1,4 +1,9 @@
 
+let currentUrl = new URL(window.location.href);
+let currentPath = currentUrl.pathname.split('/');
+let movieId = currentPath[2];
+let reviewId = currentPath[4];
+
 window.onload = function() {
 
     // we get the form from the handlebard/html form
@@ -21,13 +26,11 @@ window.onload = function() {
             
             $('#comments').prepend(
             `
-            <div class="card">
+            <div class="card" id="{{this._id}}">
                 <div class="card-block">
                 <p class="card-text">${newComment.content}</p>
                 <p>
-                    <form method="POST" action="/reviews/comments/${newComment._id}?_method=DELETE">
-                        <button class="btn btn-link" type="submit">Delete</button>
-                    </form>
+                <button class="btn btn-link delete-comment" id="deleteComment" data-comment-id="{{this._id}}">Delete</button>
                 </p>
                 </div>
             </div>
@@ -40,4 +43,22 @@ window.onload = function() {
         });
     });
 
+    document.querySelector('.delete-comment').addEventListener('click', (e) => {
+
+        let comment = $(newCommentForm).serialize();
+        let commentId = e.target.getAttribute('data-comment-id');
+        let movieId = e.target.getAttribute('data-movie-id');
+        axios.delete(`/movies/${movieId}/reviews/comments/${commentId}`)
+        .then( response => {
+            console.log(response);
+            // objectToDelete = e.target.parentNode.parentNode;
+            // comment.parentNode.removeChild(objectToDelete);
+            // document.getElementById(commentId).remove();
+            comment = document.getElementById(commentId).remove();
+            comment.parentNode.removeChild(comment);
+        })
+        .catch(error => {
+            console.log(error)
+        });
+    });
 };
