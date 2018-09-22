@@ -34,6 +34,8 @@ app.use(express.static('public'));
 
 // SERVER BOOTING UP
 
-module.exports = app.listen(3000, () => {
-  console.log('Server listening on Port 3000')
-});
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server listening on  PORT 3000");
+})
+
+module.exports = app;

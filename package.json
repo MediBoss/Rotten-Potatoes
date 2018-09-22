@@ -1,6 +1,6 @@
 {
   "name": "rotten-potatoes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a clone of rotten tomatoes ",
   "main": "app.js",
   "scripts": {
