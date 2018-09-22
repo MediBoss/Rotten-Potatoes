@@ -20,10 +20,11 @@ router.get('/admin', (req, res) => {
 
 
 // ADMIND DELETE REVIEW
-router.delete('admin/reviews/:id', (req, res) => {
+router.delete('/admin/delete/:id', (req, res) => {
     Review.findByIdAndDelete(req.params.id)
     .then(review => {
         res.status(200).send(review)
+        res.redirect('/admin')
     })
     .catch(error => {;
         console.log(error.message)
