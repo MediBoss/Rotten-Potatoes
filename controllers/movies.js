@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const MovieDb = require('moviedb-promise');
-const apiKey = '0cc67b6fe76b6e66f651671d7509fd3c'
-const moviedb = new MovieDb(apiKey);
+const moviedb = new MovieDb(process.env.MOVIE_DB_API);
 const Review = require('../models/review');
 
 // ROUTE : INDEX
@@ -15,14 +14,22 @@ router.get('/', (req, res) => {
 
 // ROUTE : SHOW
 router.get('/movies/:id', (req, res) => {
-  moviedb.movieInfo({id: req.params.id}).then(movie => {
-    Review.find({
-      movieId: req.params.id
-    }).then(reviews => {
-      res.render('movies-show', { movie: movie, reviews: reviews});
-    }).catch(console.error)
-  }).catch(console.error)
-});
-
-
+    moviedb.movieInfo({ id: req.params.id })
+    .then(movie => {
+         moviedb.movieVideos({ id: req.params.id })
+         .then(videos => { 
+             movie.trailer_youtube_id = videos.results[0].key
+             renderTemplate(movie);
+         })
+         .catch(console.error)
+         function renderTemplate(movie) {
+             Review.find({ movieId: req.params.id })
+             .then(reviews => {
+                 res.render('movies-show', { movie: movie, reviews: reviews });
+                 })
+            }
+      })
+      .catch(console.error)
+})
+  
 module.exports = router;

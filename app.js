@@ -1,4 +1,10 @@
 
+// Checking the .env file for secured data
+if (!process.env.PORT) {
+  require('dotenv').config();
+}
+
+
 // IMPORTING EXTERNAL MODULES NEEDED
 const express = require('express');
 const mongoose = require('mongoose');
