@@ -14,6 +14,7 @@
 - [x] CRUD
 - [x] Add Test 
 - [x] Push live on Heroku
+- [ ] Make the server a Restful API  
 
 ## Technology
 
